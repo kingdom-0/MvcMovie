@@ -153,6 +153,23 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201707160644360_Initial.cs" />
+    <Compile Include="Migrations\201707160644360_Initial.Designer.cs">
+      <DependentUpon>201707160644360_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707160719312_MovieWithRating.cs" />
+    <Compile Include="Migrations\201707160719312_MovieWithRating.Designer.cs">
+      <DependentUpon>201707160719312_MovieWithRating.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707160804321_DataAnnotations.cs" />
+    <Compile Include="Migrations\201707160804321_DataAnnotations.Designer.cs">
+      <DependentUpon>201707160804321_DataAnnotations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707160806299_RatingDataAnnotation.cs" />
+    <Compile Include="Migrations\201707160806299_RatingDataAnnotation.Designer.cs">
+      <DependentUpon>201707160806299_RatingDataAnnotation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -218,6 +235,20 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201707160644360_Initial.resx">
+      <DependentUpon>201707160644360_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707160719312_MovieWithRating.resx">
+      <DependentUpon>201707160719312_MovieWithRating.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707160804321_DataAnnotations.resx">
+      <DependentUpon>201707160804321_DataAnnotations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707160806299_RatingDataAnnotation.resx">
+      <DependentUpon>201707160806299_RatingDataAnnotation.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

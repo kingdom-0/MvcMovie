@@ -15,9 +15,29 @@ namespace MvcMovie.Controllers
         private MovieDbContext db = new MovieDbContext();
 
         // GET: Movies
-        public ActionResult Index()
+        public ActionResult Index(string movieGenre, string searchString)
         {
-            return View(db.Movies.ToList());
+            var movieGenres = new List<string>();
+            var genres = from m in db.Movies
+                         orderby m.Genre
+                         select m.Genre;
+            movieGenres.AddRange(genres);
+            ViewBag.movieGenre = new SelectList(movieGenres,"test");
+
+            var keyword = searchString;
+            var movies = from m in db.Movies
+                         select m;
+            if(!string.IsNullOrWhiteSpace(keyword))
+            {
+                movies = movies.Where(m => m.Title.Contains(keyword));
+            }
+
+            if(!string.IsNullOrWhiteSpace(movieGenre))
+            {
+                movies = movies.Where(m => m.Genre == movieGenre);
+            }
+
+            return View(movies);
         }
 
         // GET: Movies/Details/5
@@ -46,7 +66,7 @@ namespace MvcMovie.Controllers
         // 详细信息，请参阅 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Title,ReleaseDate,Genre,Price")] Movie movie)
+        public ActionResult Create([Bind(Include = "ID,Title,ReleaseDate,Genre,Price,Rating")] Movie movie)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +98,7 @@ namespace MvcMovie.Controllers
         // 详细信息，请参阅 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Title,ReleaseDate,Genre,Price")] Movie movie)
+        public ActionResult Edit([Bind(Include = "ID,Title,ReleaseDate,Genre,Price,Rating")] Movie movie)
         {
             if (ModelState.IsValid)
             {
